@@ -1,0 +1,35 @@
+{
+  "numeric_detection": true,
+  "date_detection": false,
+  "dynamic_templates": [
+    {
+      "strings_as_keyword": {
+        "mapping": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "match_mapping_type": "string"
+      }
+    }
+  ],
+  "properties": {
+    "rule_name": {
+      "type": "keyword"
+    },
+    "@timestamp": {
+      "type": "date"
+    },
+    "alert_time": {
+      "type": "date"
+    },
+    "match_time": {
+      "type": "date"
+    },
+    "match_body": {
+      "type": "object"
+    },
+    "aggregate_id": {
+      "type": "keyword"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "rule_name": {
+      "type": "keyword"
+    },
+    "until": {
+      "type": "date"
+    },
+    "@timestamp": {
+      "type": "date"
+    }
+  }
+}
