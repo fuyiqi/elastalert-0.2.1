@@ -1,6 +1,5 @@
 #coding
 import re
-from pprint import pprint
 alert_text='''应用系统编号：BS-449
 规则名：AVPZX1_5min_15_freq
 查询条件：[[{'bool': {'must': [{'range': {'thread_id': {'gte': 30}}}]}}]]
@@ -15,6 +14,6 @@ ES_id：1GxjE3MB-rFxBoPSlvDx'''
 
 
 text_list = [re.sub(r'：', ':', line.strip()).strip()for line in re.split(r'\n',alert_text)]
-pprint(text_list)
+print(text_list)
 
 

@@ -25,7 +25,7 @@ logging.getLogger('elasticsearch').setLevel(logging.WARNING)
 
 """
 Error Codes:
-    get-pip.py: Error connecting to ElasticSearch
+    1: Error connecting to ElasticSearch
     2: Error querying ElasticSearch
     3: Invalid Rule
     4: Missing/invalid timestamp
@@ -286,7 +286,7 @@ class MockElastAlerter(object):
                     # if timeframe is given in rule
                     if 'timeframe' in rule:
                         starttime = endtime - datetime.timedelta(seconds=rule['timeframe'].total_seconds() * 1.01)
-                    # default is get-pip.py days / 24 hours
+                    # default is 1 days / 24 hours
                     else:
                         starttime = endtime - datetime.timedelta(days=1)
 

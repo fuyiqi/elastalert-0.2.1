@@ -5,9 +5,7 @@ import logging
 import os
 import re
 import sys
-# fyq updating
-from logging.handlers import RotatingFileHandler
-
+from pprint import pprint
 import dateutil.parser
 import pytz
 from six import string_types
@@ -15,7 +13,8 @@ from six import string_types
 from . import ElasticSearchClient
 from .auth import Auth
 
-
+#fyq updating
+from logging.handlers import RotatingFileHandler
 def setlogger_byDefault(logfile_dir='logs/',logfile_name='run.log'):
     """
     set logger
@@ -79,7 +78,7 @@ def new_get_event_ts(ts_field):
 def _find_es_dict_by_key(lookup_dict, term):
     """ Performs iterative dictionary search based upon the following conditions:
 
-    get-pip.py. Subkeys may either appear behind a full stop (.) or at one lookup_dict level lower in the tree.
+    1. Subkeys may either appear behind a full stop (.) or at one lookup_dict level lower in the tree.
     2. No wildcards exist within the provided ES search terms (these are treated as string literals)
 
     This is necessary to get around inconsistencies in ES data.
@@ -99,7 +98,7 @@ def _find_es_dict_by_key(lookup_dict, term):
     if term in lookup_dict:
         return lookup_dict, term
     # If the term does not match immediately, perform iterative lookup:
-    # get-pip.py. Split the search term into tokens
+    # 1. Split the search term into tokens
     # 2. Recurrently concatenate these together to traverse deeper into the dictionary,
     #    clearing the subkey at every successful lookup.
     #
@@ -549,7 +548,7 @@ def send_WS(host, instance, parameter, Class, status, value, alarmTitle):
             '<fieldInfo><fieldEnName>{key}</fieldEnName><fieldContent>{value}</fieldContent></fieldInfo>'
                 .format(key=k,value=v)
         )
-    xmlContent = '<?xml version="get-pip.py.0" encoding="gb2312"?><opDetail><recordInfo>{}</recordInfo></opDetail>'.format(''.join(xmlContent_body))
+    xmlContent = '<?xml version="1.0" encoding="gb2312"?><opDetail><recordInfo>{}</recordInfo></opDetail>'.format(''.join(xmlContent_body))
     elastalert_logger.info('[util.send_WS()]xmlContent= %s' %(xmlContent))
     
     url = str(getUrl())#获取可用的webservice地址

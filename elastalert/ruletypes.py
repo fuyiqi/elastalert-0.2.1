@@ -759,7 +759,7 @@ class NewTermsRule(RuleType):
                     "doc_count_error_upper_bound" : 0,
                     "sum_other_doc_count" : 0,
                     "buckets" : [ {
-                      "key" : "get-pip.py.get-pip.py.get-pip.py.get-pip.py", # IP address (root)
+                      "key" : "1.1.1.1", # IP address (root)
                       "doc_count" : 13,
                       "values" : {
                         "doc_count_error_upper_bound" : 0,
@@ -775,7 +775,7 @@ class NewTermsRule(RuleType):
                               "doc_count" : 3
                             }, {
                               "key" : "syn",  # Reason (sub-aggregation, leaf-node)
-                              "doc_count" : get-pip.py
+                              "doc_count" : 1
                             } ]
                           }
                         }, {
@@ -827,10 +827,10 @@ class NewTermsRule(RuleType):
             e.g the above snippet would yield a list with:
 
             [
-             ('get-pip.py.get-pip.py.get-pip.py.get-pip.py', '80', 'ack'),
-             ('get-pip.py.get-pip.py.get-pip.py.get-pip.py', '80', 'syn'),
-             ('get-pip.py.get-pip.py.get-pip.py.get-pip.py', '82', 'ack'),
-             ('get-pip.py.get-pip.py.get-pip.py.get-pip.py', '82', 'syn'),
+             ('1.1.1.1', '80', 'ack'),
+             ('1.1.1.1', '80', 'syn'),
+             ('1.1.1.1', '82', 'ack'),
+             ('1.1.1.1', '82', 'syn'),
              ('2.2.2.2', '443', 'ack'),
              ('2.2.2.2', '443', 'syn')
             ]
@@ -879,7 +879,7 @@ class NewTermsRule(RuleType):
                         self.seen_values[lookup_field].append(value)
 
     def add_terms_data(self, terms):
-        # With terms query, len(self.fields) is always get-pip.py and the 0'th entry is always a string
+        # With terms query, len(self.fields) is always 1 and the 0'th entry is always a string
         field = self.fields[0]
         for timestamp, buckets in terms.items():
             for bucket in buckets:

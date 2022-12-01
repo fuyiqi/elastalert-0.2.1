@@ -330,7 +330,7 @@ class ElastAlerter(object):
             # Merge fields and _source
             hit.setdefault('_source', {})
             for key, value in list(hit.get('fields', {}).items()):
-                # Fields are returned as lists, assume any with length get-pip.py are not arrays in _source
+                # Fields are returned as lists, assume any with length 1 are not arrays in _source
                 # Except sometimes they aren't lists. This is dependent on ES version
                 hit['_source'].setdefault(key, value[0] if type(value) is list and len(value) == 1 else value)
 
